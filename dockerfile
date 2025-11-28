@@ -1,7 +1,7 @@
 FROM python:3.10-slim
 
 RUN mkdir /app
-WORKDIR /app/opengin/api/perf
+WORKDIR /app
 
 # Create a new user with UID 10014
 RUN addgroup --gid 10014 choreo && \
@@ -10,7 +10,7 @@ RUN addgroup --gid 10014 choreo && \
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY . .
+COPY opengin/api/perf /app
 
 RUN chown -R choreouser:choreo /app
 
